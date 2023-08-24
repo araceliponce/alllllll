@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alllllll</title>
+
+  <style>
+    :root {
+      --base: violet;
+      --base: rgb(157, 145, 243);
+
+
+      --text: #333;
+    }
+
+
+    body {
+      background-color: color-mix(in oklab, var(--base) 10%, white 10%);
+      color: var(--text);
+
+      min-height: 100vh;
+      min-height: 100svh;
+      display: grid;
+      align-content: end;
+      margin: 0;
+    }
+
+    h3 {
+      padding-block: .5em;
+      margin: 0;
+    }
+
+    p {
+      white-space: pre-line;
+      line-height: 1.3;
+    }
+
+    pre {
+      white-space: pre-wrap;
+      white-space: pre-line;
+      background-color: white;
+      color: brown;
+    }
+
+
+    h1,
+    h2,
+    h3,
+    p {
+      word-break: keep-all;
+    }
+
+    a {
+      font: inherit;
+      color: inherit;
+      word-break: break-all;
+      opacity: .9;
+    }
+
+    a:hover {
+      opacity: 1;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+
+
+    /*  */
+
+    h1 {
+      text-align: center;
+
+      font-size: 3rem;
+      margin: 0;
+      color: var(--base);
+      color: color-mix(in oklab, var(--base) 33%, black)
+    }
+
+    marquee {
+      font-size: 2rem;
+      margin: 0;
+      padding: 0;
+      border-bottom: 1px solid currentColor;
+    }
+
+
+    main {
+      padding-inline: 1rem;
+      padding-block: 2em;
+    }
+
+    aside {
+      padding-inline: 1rem;
+    }
+
+    .columns {
+      columns: min(30ch, 80vw);
+
+      column-gap: 2em;
+      text-align: start;
+      line-height: 1;
+
+    }
+
+    .columns>* {
+      break-inside: avoid;
+    }
+
+
+    h3 {
+
+      border-bottom: 1px solid currentColor;
+      border-top: 1px solid currentColor;
+      background-color: color-mix(in oklab, var(--base) 70%, violet);
+      padding-inline: .2em;
+    }
+
+    footer {
+      text-align: center;
+      background-color: color-mix(in oklab, var(--base) 55%, black);
+      color: white;
+    }
+
+    .last-updated {
+
+      /* text-transform: uppercase; */
+      border-top: 2px solid currentColor;
+      padding-block: 1em;
+      text-align: center;
+    }
+  </style>
+
+
+</head>
+
+<body>
+  <header>
+    <h1>
+      <header>ALLLLLLLLLL</header>
+      <marquee scrollamount="15">
+        The things I should remember
+      </marquee>
+    </h1>
+  </header>
+
+  <main class="">
+    <div class="columns">
+      <article id="first">
+        <h3>How to deploy the dist directory of a Vue+Vite project to gh-pages</h3>
+        <p>1. Configura la base correcta en vite.config.js (como indica https://es.vitejs.dev/guide/static-deploy.html) <small>(Si es para un repositorio tuusuario.github.io no necesita, pero sí, si es cualquier otro repositorio)</small>
+          2. npm run build
+          3. git add dist -f
+          4. git commit -m 'mensaje de commit'
+          5. git subtree push --prefix dist origin gh-pages
+        </p>
+
+        <pre>
+        import { defineConfig } from 'vite'
+          import vue from '@vitejs/plugin-vue'
+          
+          export default defineConfig({
+            base: '/nombredelrepositorio/',
+            plugins: [vue()], 
+          })      
+          </pre>
+      </article>
+
+
+      <article id="second">
+        <h3>How to deploy the dist directory of a React+Vite project to gh-pages</h3>
+
+        <p>1. instalar gh-pages (con npm gh-pages ó pnpm gh-pages)
+          2. agregar dos abreviaciones de script en el package json (predeploy y deploy)</p>
+        <pre>
+        "scripts": {
+          "dev": "vite",
+...
+          "predeploy": "npm run build",
+          "deploy": "gh-pages -d dist"
+        },
+        "de
+      </pre>
+        <p>Luego, solo necesitas ejecutar <code>pnpm run deploy</code>
+          Posiblemente funcione igual en cualquier proyecto en React, aunque no use Vite.
+        </p>
+      </article>
+
+
+
+
+      <article>
+        <h3>You can not use position sticky when using Vuetify</h3>
+        <p>
+          None of these work:
+        <pre>
+            body,
+          html,
+          .v-application,
+          .v-application__wrap,
+          #app,
+          .v-layout {
+          overflow-x: clip !important;
+          }
+          </pre>
+        </p>
+      </article>
+
+
+      <article>
+        <h3>How to see Vue+Vite project on your phone</h3>
+        <p>On package.json add add '--host' in the line that starts with "dev"
+        </p>
+        <pre>
+          "scripts": {
+            "dev": "vite --host",
+            ...
+          },
+        </pre>
+      </article>
+
+      <article>
+        <h3>How to add Alias and port</h3>
+
+        <p>On package.json
+        </p>
+        <pre>
+          // https://vitejs.dev/config/
+          export default defineConfig({
+            plugins: [vue()],
+            // server: {
+            //   port: 3001
+            // },
+            resolve: {
+              alias: {
+                "@": fileURLToPath(new URL("./src", import.meta.url))
+              }
+            }
+          });
+        </pre>
+      </article>
+
+      <article>
+        <h3>Where to get own github access token</h3>
+        <p> <a href="https://github.com/settings/tokens" target="_blank" rel="noopener noreferrer">https://github.com/settings/tokens</a>
+        </p>
+      </article>
+
+
+      <article>
+        <h3>Good, Better and Best patterns for accesible links, btns, svgs, and more.</h3>
+        <p> Here:
+          <a href="https://www.smashingmagazine.com/2021/03/good-better-best-untangling-complex-world-accessible-patterns/" target="_blank" rel="noopener noreferrer">https://www.smashingmagazine.com/2021/03/good-better-best-untangling-complex-world-accessible-patterns/</a>
+        </p>
+      </article>
+      <article>
+        <h3>Which newish HTML5 features are accessibly supported by major browsers</h3>
+        <p>This includes if they are keyboard accessible, mapped to the platform accessibility APIs, and if any accessibility related features are supported.
+          <a href="https://stevefaulkner.github.io/HTML5accessibility/">https://stevefaulkner.github.io/HTML5accessibility/</a>
+        </p>
+      </article>
+    </div>
+  </main>
+
+  <aside>
+    <article>
+      <h3> A Complete Guide To Accessible Front-End Components
+      </h3>
+      <p>
+        <a href="https://www.smashingmagazine.com/2021/03/complete-guide-accessible-front-end-components/" target="_blank" rel="noopener noreferrer">https://www.smashingmagazine.com/2021/03/complete-guide-accessible-front-end-components/</a>
+      </p>
+    </article>
+  </aside>
+
+  <footer>
+    <div class="last-updated">Last updated on 2023/08/23</div>
+  </footer>
+
+</body>
+
+</html>
